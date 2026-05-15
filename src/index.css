@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  color: #f5f0e8;
+  background: #000000;
+  font-family: 'Inter', sans-serif;
+  --cursor-x: 50vw;
+  --cursor-y: 50vh;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at top, rgba(201, 168, 76, 0.08), transparent 22%),
+    #000000;
+  color: #f5f0e8;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle 160px at var(--cursor-x) var(--cursor-y), rgba(201, 168, 76, 0.12), transparent 70%);
+  opacity: 0.9;
+  z-index: 30;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.gold-cursor {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(201, 168, 76, 0.8);
+  border-radius: 9999px;
+  left: calc(var(--cursor-x) - 9px);
+  top: calc(var(--cursor-y) - 9px);
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.35);
+  background: rgba(201, 168, 76, 0.12);
+}
+
+.gold-shimmer {
+  background: linear-gradient(115deg, #f5f0e8 20%, #e8d5a3 40%, #c9a84c 52%, #f5f0e8 70%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+.luxury-input {
+  width: 100%;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  background: rgba(0, 0, 0, 0.55);
+  padding: 1rem 1.25rem;
+  color: #f5f0e8;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.luxury-input::placeholder {
+  color: rgba(245, 240, 232, 0.42);
+}
+
+.luxury-input:focus {
+  border-color: #c9a84c;
+  box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.1);
+  background: rgba(13, 13, 13, 0.9);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+@media (max-width: 768px) {
+  body::before,
+  .gold-cursor {
+    display: none;
+  }
+}
